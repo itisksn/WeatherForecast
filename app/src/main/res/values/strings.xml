@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WeatherForecast</string>
+    <string name="internet_not_working">Internet Connection is not working, Please check you internet connection its Must be on WIFI.</string>
+    <string name="server_error">Server is not working properly</string>
+    <string name="pressure">Pressure:</string>
+    <string name="humidity">Humidity:</string>
+    <string name="wind">Wind:</string>
+
+</resources>

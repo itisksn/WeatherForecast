@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+apply plugin: 'androidx.navigation.safeargs'
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.assignment.weatherforecast"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", "\"http://api.openweathermap.org/data/2.5/\""
+            buildConfigField "String", "API_KEY", "\"5ad7218f2e11df834b0eaf3a33a39d2a\""
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"http://api.openweathermap.org/data/2.5/\""
+            buildConfigField "String", "API_KEY", "\"5ad7218f2e11df834b0eaf3a33a39d2a\""
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation 'androidx.appcompat:appcompat:1.1.0'
+        implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+        testImplementation 'junit:junit:4.12'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+        /*view model*/
+        implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+        implementation "androidx.lifecycle:lifecycle-viewmodel:$rootProject.lifecycleVersion"
+
+        //recycler View
+        implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
+
+        implementation "com.android.support:support-vector-drawable:$rootProject.supportLibraryVersion"
+        implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.interceptor"
+
+        //retrofit dependencies
+        implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
+        implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit_version"
+
+        //dimens dependencies
+        implementation "com.intuit.sdp:sdp-android:$rootProject.sdp_version"
+
+        //glide dependencies
+        implementation "com.github.bumptech.glide:glide:$rootProject.glide"
+        annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glide"
+
+        //Navigation
+        implementation "androidx.navigation:navigation-fragment:$rootProject.nav_version"
+        implementation "androidx.navigation:navigation-ui:$rootProject.nav_version"
+
+        //glide dependencies
+        implementation "com.github.bumptech.glide:glide:$rootProject.glide"
+        annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glide"
+
+        // Room components
+        implementation "androidx.room:room-runtime:$rootProject.room"
+        annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
+        androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+
+    }

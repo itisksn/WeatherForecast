@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="weatherData"
+            type="com.assignment.weatherforecast.screen.weatherForcastList.model.WeatherForcastData" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/WidthMatchHeightMatch"
+        android:background="@color/color_dark_grey"
+        android:padding="@dimen/_12sdp">
+
+        <TextView
+            android:id="@+id/cityText"
+            style="@style/Tv12MarginLeft10Black"
+            android:text='@{weatherData.name!= null ? weatherData.name : ""}'
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/condIcon"
+            style="@style/Tv14MarginLeft10"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/cityText" />
+
+        <TextView
+            android:id="@+id/condDescr"
+            style="@style/Tv12MarginLeft10Black"
+            android:text='@{weatherData.getWeather().get(0).main != null ? weatherData.getWeather().get(0).main : ""}'
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/condIcon" />
+
+        <TextView
+            android:id="@+id/temp"
+            style="@style/Tv12MarginLeft10Primary"
+            android:text='@{weatherData.getWeather().get(0).description!= null ? weatherData.getWeather().get(0).description : ""}'
+            app:layout_constraintStart_toEndOf="@+id/condDescr"
+            app:layout_constraintTop_toBottomOf="@+id/condIcon" />
+
+
+        <TextView
+            android:id="@+id/pressLab"
+            style="@style/Tv12MarginLeft10Black"
+            android:text="@string/pressure"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temp"
+
+            />
+
+        <TextView
+            android:id="@+id/press"
+            style="@style/Tv12MarginLeft10Primary"
+            app:layout_constraintStart_toEndOf="@+id/pressLab"
+            app:layout_constraintTop_toBottomOf="@+id/temp" />
+
+
+        <TextView
+            android:id="@+id/humLab"
+            style="@style/Tv12MarginLeft10Black"
+            android:text="@string/humidity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pressLab"
+
+            />
+
+        <TextView
+            android:id="@+id/hum"
+            style="@style/Tv12MarginLeft10Primary"
+            app:layout_constraintStart_toEndOf="@+id/humLab"
+            app:layout_constraintTop_toBottomOf="@+id/pressLab" />
+
+
+        <TextView
+            android:id="@+id/windLab"
+            style="@style/Tv12MarginLeft10Black"
+            android:text="@string/wind"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/humLab" />
+
+        <TextView
+            android:id="@+id/windSpeed"
+            style="@style/Tv12MarginLeft10Primary"
+            app:layout_constraintStart_toEndOf="@+id/windLab"
+            app:layout_constraintTop_toBottomOf="@+id/humLab" />
+
+        <TextView
+            android:id="@+id/windDeg"
+            style="@style/Tv12MarginLeft10Primary"
+            android:layout_marginLeft="@dimen/_5sdp"
+            app:layout_constraintStart_toEndOf="@+id/windSpeed"
+            app:layout_constraintTop_toBottomOf="@+id/humLab" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
